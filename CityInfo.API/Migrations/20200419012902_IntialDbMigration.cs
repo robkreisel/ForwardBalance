@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ForwardBalance.API.Migrations
 {
-    public partial class ForwardBalanceDBInitialMigration : Migration
+    public partial class IntialDbMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,6 +28,7 @@ namespace ForwardBalance.API.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
+                    Description = table.Column<string>(maxLength: 200, nullable: true),
                     AccountNumber = table.Column<int>(nullable: false),
                     BankId = table.Column<int>(nullable: false)
                 },
@@ -41,6 +42,16 @@ namespace ForwardBalance.API.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Banks",
+                columns: new[] { "Id", "Name", "RoutingNumber" },
+                values: new object[] { 1, "System", 0 });
+
+            migrationBuilder.InsertData(
+                table: "Accounts",
+                columns: new[] { "Id", "AccountNumber", "BankId", "Description", "Name" },
+                values: new object[] { 1, 0, 1, "Sytem account for transactions in/out", "Cash Account" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Accounts_BankId",

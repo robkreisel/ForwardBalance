@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForwardBalance.API.Migrations
 {
     [DbContext(typeof(ForwardBalanceContext))]
-    [Migration("20200412231423_SampleData")]
-    partial class SampleData
+    [Migration("20200419012902_IntialDbMigration")]
+    partial class IntialDbMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,12 +44,7 @@ namespace ForwardBalance.API.Migrations
                     b.ToTable("Accounts");
 
                     b.HasData(
-                        new { Id = 1, AccountNumber = 0, BankId = 1, Description = "Simple checking.", Name = "Checking" },
-                        new { Id = 2, AccountNumber = 0, BankId = 1, Description = "Simple savings.", Name = "Savings" },
-                        new { Id = 3, AccountNumber = 0, BankId = 2, Description = "Business checking.", Name = "Checking" },
-                        new { Id = 4, AccountNumber = 0, BankId = 2, Description = "High interest savings account.", Name = "High Yield Savings" },
-                        new { Id = 5, AccountNumber = 0, BankId = 3, Description = "Small interest on checking account balance.", Name = "Interest Checking" },
-                        new { Id = 6, AccountNumber = 0, BankId = 3, Description = "Typical rate savings account.", Name = "Interest Savings" }
+                        new { Id = 1, AccountNumber = 0, BankId = 1, Description = "Sytem account for transactions in/out", Name = "Cash Account" }
                     );
                 });
 
@@ -70,9 +65,7 @@ namespace ForwardBalance.API.Migrations
                     b.ToTable("Banks");
 
                     b.HasData(
-                        new { Id = 1, Name = "Bank of America", RoutingNumber = 11111 },
-                        new { Id = 2, Name = "Chase Bank", RoutingNumber = 22222 },
-                        new { Id = 3, Name = "PNC Bank", RoutingNumber = 33333 }
+                        new { Id = 1, Name = "System", RoutingNumber = 0 }
                     );
                 });
 
