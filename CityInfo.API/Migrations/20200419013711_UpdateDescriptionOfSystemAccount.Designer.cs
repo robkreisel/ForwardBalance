@@ -3,14 +3,16 @@ using ForwardBalance.API.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ForwardBalance.API.Migrations
 {
     [DbContext(typeof(ForwardBalanceContext))]
-    partial class ForwardBalanceContextModelSnapshot : ModelSnapshot
+    [Migration("20200419013711_UpdateDescriptionOfSystemAccount")]
+    partial class UpdateDescriptionOfSystemAccount
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

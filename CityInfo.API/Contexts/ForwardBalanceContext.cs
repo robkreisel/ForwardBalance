@@ -36,7 +36,7 @@ namespace ForwardBalance.API.Contexts
                     BankId = 1,
                     AccountNumber = 0,
                     Name = "Cash Account",
-                    Description = "Sytem account for transactions in/out"
+                    Description = "System account for transfers in and out of listed accounts"
                 });
 
             base.OnModelCreating(modelBuilder);
