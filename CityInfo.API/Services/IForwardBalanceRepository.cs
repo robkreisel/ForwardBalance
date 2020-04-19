@@ -12,7 +12,7 @@ namespace ForwardBalance.API.Services
 
         Bank GetBank(int bankId, bool includeAccounts);
 
-        IEnumerable<Account> GetAccountsForBank(int bankId);
+        IEnumerable<Account> GetAccountsForBank(int bankId, bool includeHidden);
 
         Account GetAccountForBank(int bankId, int accountId);
 

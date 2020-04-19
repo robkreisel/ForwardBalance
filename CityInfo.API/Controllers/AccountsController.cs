@@ -34,7 +34,7 @@ namespace ForwardBalance.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAccounts(int bankId)
+        public IActionResult GetAccounts(int bankId, bool includeHidden = false)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace ForwardBalance.API.Controllers
                     return NotFound();
                 }
 
-                var accountsForBank = _fowardBalanceRepository.GetAccountsForBank(bankId);
+                var accountsForBank = _fowardBalanceRepository.GetAccountsForBank(bankId, includeHidden);
 
                 return Ok(_mapper.Map<IEnumerable<AccountDto>>(accountsForBank));
             }

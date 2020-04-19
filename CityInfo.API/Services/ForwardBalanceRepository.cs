@@ -23,10 +23,18 @@ namespace ForwardBalance.API.Services
                 .Where(a => a.BankId == bankId && a.Id == accountId).FirstOrDefault();
         }
 
-        public IEnumerable<Account> GetAccountsForBank(int bankId)
+        public IEnumerable<Account> GetAccountsForBank(int bankId, bool includeHidden)
         {
+            if (includeHidden)
+            {
+                return _context.Accounts
+                    .Where(a => a.BankId == bankId).ToList();
+            }
+
             return _context.Accounts
-                .Where(a => a.BankId == bankId).ToList();
+                    .Where(a => a.BankId == bankId)
+                    .Where(a => a.IsHidden == false)
+                    .ToList();
         }
 
         public Bank GetBank(int bankId, bool includeAccounts)
