@@ -8,7 +8,7 @@ namespace ForwardBalance.API.Services
 {
     public interface IForwardBalanceRepository
     {
-        IEnumerable<Bank> GetBanks();
+        IEnumerable<Bank> GetBanks(bool includeHidden);
 
         Bank GetBank(int bankId, bool includeAccounts);
 

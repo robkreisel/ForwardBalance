@@ -41,9 +41,19 @@ namespace ForwardBalance.API.Services
                 .Where(b => b.Id == bankId).FirstOrDefault();
         }
 
-        public IEnumerable<Bank> GetBanks()
+        public IEnumerable<Bank> GetBanks(bool includeHidden)
         {
-            return _context.Banks.OrderBy(b => b.Name).ToList();
+            if (includeHidden)
+            {
+                return _context.Banks
+                    .OrderBy(b => b.Name)
+                    .ToList();
+            }
+
+            return _context.Banks
+                .Where(b => b.IsHidden == false)
+                .OrderBy(b => b.Name)
+                .ToList();
         }
 
         public bool BankExists(int bankId)

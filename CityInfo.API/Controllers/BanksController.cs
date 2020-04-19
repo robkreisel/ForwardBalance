@@ -26,9 +26,9 @@ namespace ForwardBalance.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetBanks()
+        public IActionResult GetBanks(bool includeHidden = false)
         {
-            var bankEntities = _forwardBalanceRepository.GetBanks();
+            var bankEntities = _forwardBalanceRepository.GetBanks(includeHidden);
 
             return Ok(_mapper.Map<IEnumerable<BankWithoutAccountsDto>>(bankEntities));
         }
