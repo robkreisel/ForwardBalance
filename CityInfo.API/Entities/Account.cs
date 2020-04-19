@@ -21,5 +21,6 @@ namespace ForwardBalance.API.Entities
         [ForeignKey("BankId")]
         public Bank Bank { get; set; }
         public int BankId { get; set; }
+        public bool IsHidden { get; set; }
     }
 }

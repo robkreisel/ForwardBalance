@@ -10,6 +10,7 @@ namespace ForwardBalance.API.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public int RoutingNumber { get; set; }
+        public bool IsHidden { get; set; }
         public int NumberOfAccounts
         {
             get

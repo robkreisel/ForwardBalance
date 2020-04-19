@@ -25,7 +25,8 @@ namespace ForwardBalance.API.Contexts
                 {
                     Id = 1,
                     Name = "System",
-                    RoutingNumber = 0
+                    RoutingNumber = 0,
+                    IsHidden = true
                 });
 
             modelBuilder.Entity<Account>()
@@ -36,7 +37,8 @@ namespace ForwardBalance.API.Contexts
                     BankId = 1,
                     AccountNumber = 0,
                     Name = "Cash Account",
-                    Description = "System account for transfers in and out of listed accounts"
+                    Description = "System account for transfers in and out of listed accounts",
+                    IsHidden = true
                 });
 
             base.OnModelCreating(modelBuilder);

@@ -11,5 +11,6 @@ namespace ForwardBalance.API.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public int AccountNumber { get; set; }
+        public bool IsHidden { get; set; }
     }
 }

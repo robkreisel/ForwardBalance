@@ -16,6 +16,7 @@ namespace ForwardBalance.API.Entities
         [MaxLength(50)]
         public string Name { get; set; }
         public int RoutingNumber { get; set; }
+        public bool IsHidden { get; set; }
         
         public ICollection<Account> Accounts { get; set; }
         = new List<Account>();
