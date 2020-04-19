@@ -64,6 +64,7 @@ namespace ForwardBalance.API.Services
                 .ToList();
         }
 
+
         public bool BankExists(int bankId)
         {
             return _context.Banks.Any(b => b.Id == bankId);
@@ -89,6 +90,11 @@ namespace ForwardBalance.API.Services
         public bool Save()
         {
             return (_context.SaveChanges() >= 0);
+        }
+
+        public void AddBank(Bank bank)
+        {
+            _context.Banks.Add(bank);
         }
     }
 }

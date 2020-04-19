@@ -10,8 +10,9 @@ namespace ForwardBalance.API.Profiles
     {
         public BankProfile()
         {
+            CreateMap<Entities.Bank, Models.BankDto>().ReverseMap();
             CreateMap<Entities.Bank, Models.BankWithoutAccountsDto>();
-            CreateMap<Entities.Bank, Models.BankDto>();
+            CreateMap<Models.BankForCreationDto, Entities.Bank>();
         }
     }
 }

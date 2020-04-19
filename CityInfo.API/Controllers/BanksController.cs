@@ -50,5 +50,21 @@ namespace ForwardBalance.API.Controllers
 
             return Ok(_mapper.Map<BankWithoutAccountsDto>(bank));
         }
+
+        [HttpPost]
+        public IActionResult CreateBank(BankForCreationDto bank)
+        {
+            var finalBank = _mapper.Map<Entities.Bank>(bank);
+
+            _forwardBalanceRepository.AddBank(finalBank);
+            _forwardBalanceRepository.Save();
+
+            var createdBankToReturn = _mapper.Map<Models.BankDto>(finalBank);
+
+            return CreatedAtRoute(
+                "GetBank",
+                new { id = createdBankToReturn.Id },
+                createdBankToReturn);
+        }
     }
 }

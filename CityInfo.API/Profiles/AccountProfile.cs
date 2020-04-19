@@ -12,7 +12,7 @@ namespace ForwardBalance.API.Profiles
         {
             CreateMap<Entities.Account, Models.AccountDto>();
             CreateMap<Models.AccountForCreationDto, Entities.Account>();
-            CreateMap<Models.AccountForUpdateDto, Entities.Account>();
+            //CreateMap<Models.AccountForUpdateDto, Entities.Account>();
             CreateMap<Entities.Account, Models.AccountForUpdateDto>().ReverseMap();
         }
     }

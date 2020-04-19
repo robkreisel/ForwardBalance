@@ -18,6 +18,8 @@ namespace ForwardBalance.API.Services
 
         bool BankExists(int bankId);
 
+        void AddBank(Bank bank);
+
         void AddAccountForBank(int bankId, Account account);
 
         void UpdateAccountForBank(int bankId, Account account);
