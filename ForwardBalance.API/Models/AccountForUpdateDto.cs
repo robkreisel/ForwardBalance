@@ -15,7 +15,8 @@ namespace ForwardBalance.API.Models
         [MaxLength(200)]
         public string Description { get; set; }
 
-        public int AccountNumber { get; set; }
+        [MaxLength(20)]
+        public string AccountNumber { get; set; }
 
         public bool IsHidden { get; set; }
     }

@@ -35,7 +35,7 @@ namespace ForwardBalance.API.Contexts
                 {
                     Id = 1,
                     BankId = 1,
-                    AccountNumber = 0,
+                    AccountNumber = "0",
                     Name = "Cash Account",
                     Description = "System account for transfers in and out of listed accounts",
                     IsHidden = true
