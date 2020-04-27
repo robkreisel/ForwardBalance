@@ -7,6 +7,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200426224638_AddTransactionTable.cs" />
     <Compile Remove="Migrations\20200426224638_AddTransactionTable.Designer.cs" />
+    <Compile Remove="Migrations\20200427004048_testing.cs" />
+    <Compile Remove="Migrations\20200427004048_testing.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
