@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ForwardBalance.API.Models
 {
-    public class TransactionDto
+    public class EntryDto
     {
         public int Id { get; set; }
         public DateTime Date { get; set; }

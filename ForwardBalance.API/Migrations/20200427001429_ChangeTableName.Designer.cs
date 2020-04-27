@@ -4,14 +4,16 @@ using ForwardBalance.API.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ForwardBalance.API.Migrations
 {
     [DbContext(typeof(ForwardBalanceContext))]
-    partial class ForwardBalanceContextModelSnapshot : ModelSnapshot
+    [Migration("20200427001429_ChangeTableName")]
+    partial class ChangeTableName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -94,10 +96,6 @@ namespace ForwardBalance.API.Migrations
                     b.HasIndex("AccountId");
 
                     b.ToTable("Entries");
-
-                    b.HasData(
-                        new { Id = 1, AccountId = 1, Amount = 0.0, Date = new DateTime(2020, 4, 26, 10, 10, 0, 0, DateTimeKind.Unspecified), Description = "Starting balance" }
-                    );
                 });
 
             modelBuilder.Entity("ForwardBalance.API.Entities.Account", b =>

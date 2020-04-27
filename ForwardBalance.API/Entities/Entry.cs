@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ForwardBalance.API.Entities
 {
-    public class Transaction
+    public class Entry
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

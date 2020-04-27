@@ -11,6 +11,7 @@ namespace ForwardBalance.API.Contexts
     {
         public DbSet<Bank> Banks { get; set; }
         public DbSet<Account> Accounts { get; set; }
+        public DbSet<Entry> Entries { get; set; }
 
         public ForwardBalanceContext(DbContextOptions<ForwardBalanceContext> options) : base(options)
         {
@@ -41,9 +42,9 @@ namespace ForwardBalance.API.Contexts
                     IsHidden = true
                 });
 
-            modelBuilder.Entity<Transaction>()
+            modelBuilder.Entity<Entry>()
                 .HasData(
-                new Transaction()
+                new Entry()
                 {
                     Id = 1,
                     Date = new DateTime(2020, 4, 26, 10, 10, 0),
