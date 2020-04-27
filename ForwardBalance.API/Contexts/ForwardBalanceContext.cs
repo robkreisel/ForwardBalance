@@ -51,7 +51,7 @@ namespace ForwardBalance.API.Contexts
                     Description = "Starting balance",
                     Amount = 0.00,
                     AccountId = 1,
-                    //TransferAccountId = 1
+                    TransferAccountId = 1
                 });
 
             base.OnModelCreating(modelBuilder);
