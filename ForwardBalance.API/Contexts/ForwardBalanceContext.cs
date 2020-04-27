@@ -41,6 +41,18 @@ namespace ForwardBalance.API.Contexts
                     IsHidden = true
                 });
 
+            modelBuilder.Entity<Transaction>()
+                .HasData(
+                new Transaction()
+                {
+                    Id = 1,
+                    Date = new DateTime(2020, 4, 26, 10, 10, 0),
+                    Description = "Starting balance",
+                    Amount = 0.00,
+                    AccountId = 1,
+                    //TransferAccountId = 1
+                });
+
             base.OnModelCreating(modelBuilder);
         }
 
