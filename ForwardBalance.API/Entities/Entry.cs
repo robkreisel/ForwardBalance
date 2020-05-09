@@ -22,8 +22,8 @@ namespace ForwardBalance.API.Entities
         [ForeignKey("AccountId")]
         public Account Account { get; set; }
         public int AccountId { get; set; }
-        [ForeignKey("TransferAccountId")]
-        public Account TransferAccount { get; set; }
-        public int TransferAccountId { get; set; }
+        [ForeignKey("RelatedEntryId")]
+        public Entry RelatedEntry { get; set; }
+        public int RelatedEntryId { get; set; }
     }
 }

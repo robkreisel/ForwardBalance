@@ -37,7 +37,7 @@ namespace ForwardBalance.API.Contexts
                     Id = 1,
                     BankId = 1,
                     AccountNumber = "0",
-                    Name = "Cash Account",
+                    Name = "System Account",
                     Description = "System account for transfers in and out of listed accounts",
                     IsHidden = true
                 });
@@ -50,9 +50,32 @@ namespace ForwardBalance.API.Contexts
                     Date = new DateTime(2020, 4, 26, 10, 10, 0),
                     Description = "Starting balance",
                     Amount = 0.00,
-                    AccountId = 1,
-                    TransferAccountId = 1
+                    AccountId = 1
                 });
+
+            modelBuilder.Entity<Entry>()
+                .HasData(
+                new Entry()
+                {
+                    Id = 100,
+                    Date = new DateTime(2020, 4, 27, 0, 0, 0),
+                    Description = "Deposit",
+                    Amount = 10.00,
+                    AccountId = 4
+                });
+
+            modelBuilder.Entity<Entry>()
+                .HasData(
+                new Entry()
+                {
+                    Id = 101,
+                    Date = new DateTime(2020, 4, 27, 0, 0, 0),
+                    Description = "Deposit",
+                    Amount = -10.00,
+                    AccountId = 1
+                });
+
+
 
             base.OnModelCreating(modelBuilder);
         }
