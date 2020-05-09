@@ -30,6 +30,24 @@ namespace ForwardBalance.API.Contexts
                     IsHidden = true
                 });
 
+            modelBuilder.Entity<Bank>()
+                .HasData(
+                new Bank()
+                {
+                    Id = 2,
+                    Name = "Test Bank A",
+                    RoutingNumber = 11111
+                });
+
+            modelBuilder.Entity<Bank>()
+                .HasData(
+                new Bank()
+                {
+                    Id = 3,
+                    Name = "Test Bank B",
+                    RoutingNumber = 22222
+                });
+
             modelBuilder.Entity<Account>()
               .HasData(
                 new Account()
@@ -42,38 +60,82 @@ namespace ForwardBalance.API.Contexts
                     IsHidden = true
                 });
 
-            modelBuilder.Entity<Entry>()
-                .HasData(
-                new Entry()
+            modelBuilder.Entity<Account>()
+              .HasData(
+                new Account()
                 {
-                    Id = 1,
-                    Date = new DateTime(2020, 4, 26, 10, 10, 0),
-                    Description = "Starting balance",
-                    Amount = 0.00,
-                    AccountId = 1
+                    Id = 2,
+                    BankId = 2,
+                    AccountNumber = "A1",
+                    Name = "Test Checking Account",
+                    Description = "This is a test checking account for Test Bank A"
                 });
 
-            modelBuilder.Entity<Entry>()
-                .HasData(
-                new Entry()
+            modelBuilder.Entity<Account>()
+              .HasData(
+                new Account()
                 {
-                    Id = 100,
-                    Date = new DateTime(2020, 4, 27, 0, 0, 0),
-                    Description = "Deposit",
-                    Amount = 10.00,
-                    AccountId = 4
+                    Id = 3,
+                    BankId = 2,
+                    AccountNumber = "A2",
+                    Name = "Test Savings Account",
+                    Description = "This is a test savings account for Test Bank A"
                 });
 
-            modelBuilder.Entity<Entry>()
-                .HasData(
-                new Entry()
+            modelBuilder.Entity<Account>()
+              .HasData(
+                new Account()
                 {
-                    Id = 101,
-                    Date = new DateTime(2020, 4, 27, 0, 0, 0),
-                    Description = "Deposit",
-                    Amount = -10.00,
-                    AccountId = 1
+                    Id = 4,
+                    BankId = 3,
+                    AccountNumber = "B1",
+                    Name = "Test Checking Account",
+                    Description = "This is a test checking account for Test Bank B"
                 });
+
+            modelBuilder.Entity<Account>()
+              .HasData(
+                new Account()
+                {
+                    Id = 5,
+                    BankId = 3,
+                    AccountNumber = "B2",
+                    Name = "Test Savings Account",
+                    Description = "This is a test savings account for Test Bank B"
+                });
+
+            //modelBuilder.Entity<Entry>()
+            //    .HasData(
+            //    new Entry()
+            //    {
+            //        Id = 1,
+            //        Date = new DateTime(2020, 4, 26, 10, 10, 0),
+            //        Description = "Starting balance",
+            //        Amount = 0.00,
+            //        AccountId = 1
+            //    });
+
+            //modelBuilder.Entity<Entry>()
+            //    .HasData(
+            //    new Entry()
+            //    {
+            //        Id = 100,
+            //        Date = new DateTime(2020, 4, 27, 0, 0, 0),
+            //        Description = "Deposit",
+            //        Amount = 10.00,
+            //        AccountId = 4
+            //    });
+
+            //modelBuilder.Entity<Entry>()
+            //    .HasData(
+            //    new Entry()
+            //    {
+            //        Id = 101,
+            //        Date = new DateTime(2020, 4, 27, 0, 0, 0),
+            //        Description = "Deposit",
+            //        Amount = -10.00,
+            //        AccountId = 1
+            //    });
 
 
 
