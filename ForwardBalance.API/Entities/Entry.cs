@@ -18,7 +18,7 @@ namespace ForwardBalance.API.Entities
         [MaxLength(100)]
         public string Description { get; set; }
         [Required]
-        public double Amount { get; set; }
+        public decimal Amount { get; set; }
         [ForeignKey("AccountId")]
         public Account Account { get; set; }
         public int AccountId { get; set; }
