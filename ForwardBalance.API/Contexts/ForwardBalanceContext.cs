@@ -20,6 +20,13 @@ namespace ForwardBalance.API.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            foreach (var property in modelBuilder.Model.GetEntityTypes()
+                .SelectMany(t => t.GetProperties())
+                .Where(p => p.ClrType == typeof(decimal)))
+            {
+                property.Relational().ColumnType = "decimal(18, 2)";
+            }
+
             modelBuilder.Entity<Bank>()
                 .HasData(
                 new Bank()
@@ -104,39 +111,64 @@ namespace ForwardBalance.API.Contexts
                     Description = "This is a test savings account for Test Bank B"
                 });
 
-            //modelBuilder.Entity<Entry>()
-            //    .HasData(
-            //    new Entry()
-            //    {
-            //        Id = 1,
-            //        Date = new DateTime(2020, 4, 26, 10, 10, 0),
-            //        Description = "Starting balance",
-            //        Amount = 0.00,
-            //        AccountId = 1
-            //    });
+            modelBuilder.Entity<Entry>()
+                .HasData(
+                new Entry()
+                {
+                    Id = 1,
+                    Date = new DateTime(2020, 4, 26, 0, 0, 1),
+                    Description = "Starting balance",
+                    Amount = 0.00M,
+                    AccountId = 1
+                });
 
-            //modelBuilder.Entity<Entry>()
-            //    .HasData(
-            //    new Entry()
-            //    {
-            //        Id = 100,
-            //        Date = new DateTime(2020, 4, 27, 0, 0, 0),
-            //        Description = "Deposit",
-            //        Amount = 10.00,
-            //        AccountId = 4
-            //    });
+            modelBuilder.Entity<Entry>()
+                .HasData(
+                new Entry()
+                {
+                    Id = 2,
+                    Date = new DateTime(2020, 4, 27, 0, 0, 0),
+                    Description = "Deposit",
+                    Amount = 10.00M,
+                    AccountId = 2,
+                    RelatedEntryId = 3
+                });
 
-            //modelBuilder.Entity<Entry>()
-            //    .HasData(
-            //    new Entry()
-            //    {
-            //        Id = 101,
-            //        Date = new DateTime(2020, 4, 27, 0, 0, 0),
-            //        Description = "Deposit",
-            //        Amount = -10.00,
-            //        AccountId = 1
-            //    });
+            modelBuilder.Entity<Entry>()
+                .HasData(
+                new Entry()
+                {
+                    Id = 3,
+                    Date = new DateTime(2020, 4, 27, 0, 0, 0),
+                    Description = "Deposit",
+                    Amount = -10.00M,
+                    AccountId = 1,
+                    RelatedEntryId = 2
+                });
 
+            modelBuilder.Entity<Entry>()
+                .HasData(
+                new Entry()
+                {
+                    Id = 4,
+                    Date = new DateTime(2020, 4, 28, 0, 0, 0),
+                    Description = "Transfer to Test Bank A - Test Savings Account",
+                    Amount = -4.55M,
+                    AccountId = 2,
+                    RelatedEntryId = 5
+                });
+
+            modelBuilder.Entity<Entry>()
+                .HasData(
+                new Entry()
+                {
+                    Id = 5,
+                    Date = new DateTime(2020, 4, 28, 0, 0, 0),
+                    Description = "Transfer from Test Bank A - Test Checking Account",
+                    Amount = 4.55M,
+                    AccountId = 3,
+                    RelatedEntryId = 4
+                });
 
 
             base.OnModelCreating(modelBuilder);

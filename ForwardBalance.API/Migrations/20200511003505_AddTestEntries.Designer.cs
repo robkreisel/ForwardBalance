@@ -4,14 +4,16 @@ using ForwardBalance.API.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ForwardBalance.API.Migrations
 {
     [DbContext(typeof(ForwardBalanceContext))]
-    partial class ForwardBalanceContextModelSnapshot : ModelSnapshot
+    [Migration("20200511003505_AddTestEntries")]
+    partial class AddTestEntries
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -106,10 +108,8 @@ namespace ForwardBalance.API.Migrations
 
                     b.HasData(
                         new { Id = 1, AccountId = 1, Amount = 0.00m, Date = new DateTime(2020, 4, 26, 0, 0, 1, 0, DateTimeKind.Unspecified), Description = "Starting balance", RelatedEntryId = 0 },
-                        new { Id = 2, AccountId = 2, Amount = 10.00m, Date = new DateTime(2020, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Deposit", RelatedEntryId = 3 },
-                        new { Id = 3, AccountId = 1, Amount = -10.00m, Date = new DateTime(2020, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Deposit", RelatedEntryId = 2 },
-                        new { Id = 4, AccountId = 2, Amount = -4.55m, Date = new DateTime(2020, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Transfer to Test Bank A - Test Savings Account", RelatedEntryId = 5 },
-                        new { Id = 5, AccountId = 3, Amount = 4.55m, Date = new DateTime(2020, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Transfer from Test Bank A - Test Checking Account", RelatedEntryId = 4 }
+                        new { Id = 2, AccountId = 2, Amount = 10.00m, Date = new DateTime(2020, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Deposit", RelatedEntryId = 0 },
+                        new { Id = 3, AccountId = 1, Amount = -10.00m, Date = new DateTime(2020, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Deposit", RelatedEntryId = 0 }
                     );
                 });
 
